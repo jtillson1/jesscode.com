@@ -53,12 +53,12 @@ return (
 <div className={classes.heroButtons}>
     <Grid container spacing={2} justify="center">
         <Grid item>
-            <Button variant="contained" color="primary" className="webBtn" onClick={() => { setCurrentPage('WebGallery') }}>
+            <Button variant="contained" color="primary" className="webBtn" onClick={ () => { setCurrentPage('WebGallery') }}>
                 Web Dev
 </Button>
         </Grid>
         <Grid item>
-            <Button variant="outlined" color="primary" className="graphicsBtn" onClick={() => { setCurrentPage('GraphicGallery') }} >
+            <Button  className="graphicsBtn" onClick={() => { setCurrentPage('GraphicGallery') }} >
                 Graphic Design
 </Button>
         </Grid>
