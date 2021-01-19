@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap');
-
+body {
+  box-sizing: border-box;
+}
 .close a{
 text-decoration: none;
 font-size: 15px;
@@ -8,14 +10,17 @@ color: #dfdfdf;
 }
 
 .heroContent {
-  background: rgb(139,208,195);
-background: linear-gradient(0deg, rgb(119, 198, 235) 0%, rgb(128, 212, 250) 9%, rgba(255,255,255,1) 100%);
-  padding: 20px 0 50px 0;
-
+ padding: 40px 0 50px 0;
+ background: rgb(227,227,227);
+ background: linear-gradient(0deg, rgb(211, 211, 211) 4%, rgba(255,255,255,1) 85%);
+ 
 }
 .bio {
+  font-size: 1.5em;
   font-family: 'Roboto Condensed', sans-serif;
   letter-spacing: 0.01em;
+  line-height: 1.5em;
+  
 }
 .learnedList  {
   width: 100%;
@@ -27,4 +32,18 @@ background: linear-gradient(0deg, rgb(119, 198, 235) 0%, rgb(128, 212, 250) 9%, 
 }
 .list li:nth-child(odd) {
   background: #dfdfdf;
+}
+.aboutPhoto {
+  max-width: 100%;
+ margin-bottom: 3em;
+
+}
+.aboutBox {
+  height: 90%;
+  padding: 10%;
+ 
+}
+.webButton {
+ font-size: 0.9em;
+ cursor: pointer;
 }
