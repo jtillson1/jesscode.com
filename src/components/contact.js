@@ -1,71 +1,77 @@
 import React, { useState } from 'react';
-import { validateEmail } from '../utils/helpers';
-import '../index.css';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import CancelIcon from '@material-ui/icons/Cancel';
-function ContactForm() {
-    const [errorMessage, setErrorMessage] = useState('');
-    const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-    const { name, email, message } = formState;
+import '../index.css';
+import EmailIcon from '@material-ui/icons/Email';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+const ContactForm = () => {
+    const useStyles = makeStyles((theme) => ({
+        icon: {
+            marginRight: theme.spacing(2),
+        },
+        heroContent: {
+            backgroundColor: theme.palette.background.paper,
+            padding: theme.spacing(8, 0, 6),
+        },
+        heroButtons: {
+            marginTop: theme.spacing(4),
+        },
+        cardGrid: {
+            paddingTop: theme.spacing(8),
+            paddingBottom: theme.spacing(8),
+        },
+        card: {
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+        },
+        cardMedia: {
+            paddingTop: '56.25%', // 16:9
+        },
+        cardContent: {
+            flexGrow: 1,
+        },
+        modal: {
+            marginTop: '70px',
+    
+            
+        },
+        icon: {
+            fontSize: "large"
+        },
+        footer: {
+            backgroundColor: theme.palette.background.paper,
+            padding: theme.spacing(6),
+        },
+    }));
+    const classes = useStyles();
 
-    function handleChange(e) {
-        //validate the email information
-        if (e.target.name === 'email') {
-            const isValid = validateEmail(e.target.value);
-            console.log(isValid);
-            // isValid conditional statement
-            if (!isValid) {
-                setErrorMessage('Your email is invalid.');
-            } else {
-                setErrorMessage('');
-            }
-        } else { //vallidate the other inputs
-            if (!e.target.value.length) {
-                setErrorMessage(`${e.target.name} is required.`);
-            } else {
-                setErrorMessage('');
-            }
-        }
-        //The name property of target in this expression actually 
-        //refers to the name attribute of the form element.
-        if (!errorMessage) {
-            setFormState({ ...formState, [e.target.name]: e.target.value });
-        }
-    }
-    function handleSubmit(e) {
-        e.preventDefault();
-        console.log(formState);
-    }
     return (
         <React.Fragment>
-            {/* Hero unit */}
-            <div className="heroContent">
-
-                <Container maxWidth="sm">
-                    <span align="left" className="close"><a href="/">{<CancelIcon />}</a></span>
-                    <Typography component="h3" variant="h4" align="center" color="textPrimary" gutterBottom>
-                        Contact Me
-</Typography>
-                    <Typography className="bio" variant="h5" align="justify-center" color="textSecondary" paragraph>
-                        <form action="mailto:jess@jesscode.com" id="contact-form" onSubmit={handleSubmit}>
-                            <input type="text" id="formInput" placeholder="Name" name="name" defaultValue={name} onBlur={handleChange} />
-                            <input type="email" placeholder="Email" id="formInput" name="email" defaultValue={email} onBlur={handleChange} />
-                            <div>
-                                <textarea placeholder="What do you want to say..." name="message" id="formInput" defaultValue={message} onBlur={handleChange} rows="5" />
-                            </div>
-                            {errorMessage && (
-                                <div>
-                                    <p className="error-text">{errorMessage}</p>
-                                </div>
-                            )}
-                            <button type="submit">Submit</button>
-                        </form>
-                    </Typography>
-                </Container>
-            </div>
-        </React.Fragment>
-    )
-}
+                    <Card>
+      <CardContent>
+        <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={6} className="contactColumn">
+            <a href="mailto:jess@jesscode.com"><span className="icon"><EmailIcon /></span>
+                <h3>Jess@jesscode.com</h3></a>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={6} className="contactColumn">
+            <a href="tel:+1-270-703-6918"><span className={classes.icon}><ContactPhoneIcon /></span>
+                <h3>270-703-6918</h3></a>
+            </Grid>
+        </Grid>
+      </CardContent>
+      <CardActions>
+        <Button size="small">View Resume</Button>
+      </CardActions>
+    </Card>
+                </React.Fragment>
+            )
+};
 
 export default ContactForm;

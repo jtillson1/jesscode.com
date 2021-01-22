@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Contact from './contact';
-import About from './about';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import { withStyles } from '@material-ui/core/styles';
+import { validateEmail } from '../utils/helpers';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -36,12 +39,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
   },
-  cardPricing: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'baseline',
-    marginBottom: theme.spacing(2),
-  },
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,
     marginTop: theme.spacing(8),
@@ -53,28 +50,80 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 export default function Nav() {
-
-
   const classes = useStyles();
-
-  const [currentPage, setCurrentPage] = useState('Gallery');
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'Contact':
-        return <Contact />;
-      case 'About':
-        return <About />;
-    }
+  //OLD NAV
+  // const [currentPage, setCurrentPage] = useState('Gallery');
+  // const renderPage = () => {
+  //   switch (currentPage) {
+  //     case 'Contact':
+  //       return <Contact />;
+  //     case 'About':
+  //       return <About />;
+  //   }
+  // };
+  //about me accordion handling
+  const AccordionDetails = withStyles((theme) => ({
+    root: {
+    },
+  }))(MuiAccordionDetails);
+  const [expanded, setExpanded] = React.useState('gallery');
+  const handleAccordion = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : true);
   };
-
   return (
     <React.Fragment>
+      <Accordion expanded={expanded === 'landingPage'} onChange={handleAccordion('landingPage')}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+        ><h3 className="accHeader">ABOUT &amp; CONTACT</h3>
+        </AccordionSummary>
+        <AccordionDetails className="aboutDetails">
+          <Grid container className="aboutContact"xs={12}>
+            <Grid item>
+              <Grid item xs={12} sm={7} md={5} lg={4} className="aboutBox">
+                <h3 className="bio" >
+                  After being exposed to basic HTML &amp; CSS in my college graphic design courses, I knew I wanted to learn more.
+                  Post graduation, I enrolled in &amp; completed a Full-Stack Web Development bootcamp.
+                            </h3>
+                <h3 className="bio" >
+                  My program inroduced me to, and expanded upon, some of the industry's leading technologies. I enjoy using what I learned to
+                  create clean, efficient sites and applications.
+                            </h3>
+                <Accordion >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography className={classes.heading}>A few of the things I've learnd so far...</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails className="learnedList">
+                    <ul className="list">
+                      <li>HTML, CSS, &amp; Git</li>
+                      <li>JavaScript</li>
+                      <li>Node.js</li>
+                      <li>Express.js</li>
+                      <li>SQL</li>
+                      <li>React</li>
+                      <li>MERN stack</li>
+                      <li>PWA</li>
+                      <li>Bootstrap</li>
+                      <li>API's</li>
+                    </ul>
+                  </AccordionDetails>
+                </Accordion>
+              </Grid>
+              <Grid item item xs={12} sm={7} md={5} lg={4} className="aboutBox">
+                <Contact />
+              </Grid>
+            </Grid>
+          </Grid>
+        </AccordionDetails>
+      </Accordion>
       <CssBaseline />
       {/* {checkLogin()} */}
-      <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+      {/* <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
           </Typography>
@@ -87,8 +136,8 @@ export default function Nav() {
               </Link>
           </nav>
         </Toolbar>
-      </AppBar>
-      {renderPage()}
+      </AppBar> */}
+      
     </React.Fragment>
   );
 }
