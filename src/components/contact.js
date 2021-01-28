@@ -5,14 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import '../index.css';
 import EmailIcon from '@material-ui/icons/Email';
 import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 const ContactForm = () => {
     const useStyles = makeStyles((theme) => ({
         icon: {
-            marginRight: theme.spacing(2),
+            fontSize: "large",
+            marginLeft: "45%"
+            
         },
         heroContent: {
             backgroundColor: theme.palette.background.paper,
@@ -41,9 +42,6 @@ const ContactForm = () => {
     
             
         },
-        icon: {
-            fontSize: "large"
-        },
         footer: {
             backgroundColor: theme.palette.background.paper,
             padding: theme.spacing(6),
@@ -57,7 +55,7 @@ const ContactForm = () => {
       <CardContent>
         <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={6} className="contactColumn">
-            <a href="mailto:jess@jesscode.com"><span className="icon"><EmailIcon /></span>
+            <a href="mailto:jess@jesscode.com"><span className={classes.icon}><EmailIcon /></span>
                 <h3>Jess@jesscode.com</h3></a>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={6} className="contactColumn">
@@ -67,7 +65,8 @@ const ContactForm = () => {
         </Grid>
       </CardContent>
       <CardActions>
-        <Button size="small">View Resume</Button>
+      <a href="../assets/images/jessica_tillson.pdf" download>
+ <Button className="resume" size="small">View Resume</Button></a>
       </CardActions>
     </Card>
                 </React.Fragment>

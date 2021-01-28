@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Contact from './contact';
 import Accordion from '@material-ui/core/Accordion';
@@ -9,8 +8,9 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import { withStyles } from '@material-ui/core/styles';
-import { validateEmail } from '../utils/helpers';
 import Grid from '@material-ui/core/Grid';
+import Logotype from '../assets/images/logotype.png';
+import '../index.css';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -39,16 +39,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
   },
-  footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up('sm')]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-    },
-  },
 }));
 export default function Nav() {
   const classes = useStyles();
@@ -74,9 +64,10 @@ export default function Nav() {
   return (
     <React.Fragment>
       <Accordion expanded={expanded === 'landingPage'} onChange={handleAccordion('landingPage')}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-        ><h3 className="accHeader">ABOUT &amp; CONTACT</h3>
+        <AccordionSummary className="sum"
+          expandIcon={<ExpandMoreIcon />}>
+            <h4 className="aboutContacth">About &amp; Contact</h4>
+            <img src={Logotype}></img>  
         </AccordionSummary>
         <AccordionDetails className="aboutDetails">
           <Grid container className="aboutContact"xs={12}>

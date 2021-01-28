@@ -11,6 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import CardHeader from '@material-ui/core/CardHeader';
+import '../index.css';
+
 import image1 from '../assets/images/web/0.png';
 import image2 from '../assets/images/web/1.png';
 import image3 from '../assets/images/web/2.png';
@@ -127,13 +129,11 @@ export default function WebGallery() {
         },
     ];
 
-
     return (
         <React.Fragment>
             <CssBaseline />
             <main>
                 <Container className={classes.cardGrid} maxWidth="md">
-                    {/* End hero unit */}
                     <Grid container spacing={4}>
                         {webProjects.map((project) => (
                             <Grid item key={project} xs={12} sm={6} md={4}>
@@ -142,7 +142,6 @@ export default function WebGallery() {
                                         className={classes.cardMedia}
                                         image={project.image}
                                         title="Image title"
-
                                     />
                                     <CardContent className={classes.cardContent}>
                                         <CardHeader
@@ -173,18 +172,6 @@ export default function WebGallery() {
                     </Grid>
                 </Container>
             </main>
-
-            {/* Footer */}
-            <footer className={classes.footer}>
-                <Typography variant="h6" align="center" gutterBottom>
-                    Footer
-        </Typography>
-                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                    Something here to give the footer a purpose!
-        </Typography>
-                <Copyright />
-            </footer>
-            {/* End footer */}
         </React.Fragment>
     );
 }

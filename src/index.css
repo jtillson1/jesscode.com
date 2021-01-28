@@ -2,6 +2,8 @@
 body {
   box-sizing: border-box;
   background: #000000;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 .close a{
 text-decoration: none;
@@ -18,10 +20,10 @@ color: #dfdfdf;
 }
 .bio {
   font-family: 'Roboto Condensed', sans-serif;
-  line-height: 1.5em;
+  line-height: 1.3em;
   font-size: 20px;
   padding: 0px 5%;
-  text-align: justify;
+  
 }
 
 .list {
@@ -42,13 +44,21 @@ color: #dfdfdf;
  margin-bottom: 3em;
 
 }
+.aboutContact {
+  background: rgb(17,17,17);
+background: linear-gradient(43deg, rgba(17,17,17,1) 0%, rgba(153,153,153,1) 100%);
+}
+.contactColumn a {
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
+}
 .aboutBox {
 padding: 2%;
-background: rgba(41, 41, 41, 0.6);
+background: rgba(0, 0,0, 0.4);
 box-shadow:  0px 0px 30px #000000;
 border: 3px solid #000000;
 color: white;
-
 }
 .webButton {
  font-size: 0.9em;
@@ -64,29 +74,79 @@ color: white;
 .accHeader {
 margin:0 0;
 }
-.aboutContact {
-  background: url('../src/assets/images/modal.png');
-  background-size: cover;
-  background-position: center;
-}
-.contactColumn {
-  text-align: center;
-  line-height: 0.3em;
-}
-.contactColumn a {
-  text-decoration: none;
-  color: #000000;
-}
 
+.footCol {
+  text-align: center;
+color: #919191;
+font-size: 0.8em;
+}
+.footCol a{
+ text-decoration: none;
+ color: #dfdfdf;
+ 
+}
+.footCol a:hover{
+  color: #919191;
+  transition-duration: 0.2s;
+ }
+.resume {
+  width: 100%;
+  text-align: center;
+}
+.sum {
+max-height: 80px;
+}
+.sum img {
+ display: none;
+}
+.whiteLogo {
+ max-width: 50%;
+ height: 140px;
+ margin: 3% 25% 0% 25%;
+ opacity: 0.9;
+}
+.aboutContacth {
+  color: #919191;
+  font-size:0.5em;
+}
+.shortBio {
+  display: none;
+}
+.jumboImg {
+width: 250px;
+margin: 0 auto;
+}
+.jumboImg img {
+  max-width: 100%;
+  border-radius: 48%;
+  border: 5px solid #dfdfdf9e;
+  
+
+}
 
 @media screen and (min-width: 480px) {
 .aboutContact {
   padding: 2%;
+  background: url('../src/assets/images/modal.png');
+  background-size: cover;
+  background-position: center;
 }
 .bio {
   text-align: left;
   padding: 0px;
 }
-
-
+.sum img {
+  display: inline;
+  margin: 0 auto;
+  max-width: 150px;
+}
+.whiteLogo {
+  display: none;
+}
+.aboutContacth {
+display: none;
+}
+.jumboImg {
+  display: none;
+}
 }

@@ -4,8 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import WebGallery from './webGallery';
 import GraphicGallery from './graphicGallery';
-
-
+import '../index.css';
+import whiteLogo from '../assets/images/logotype-white.png';
+import aboutMe from '../assets/images/grad-5.jpg';
 const useStyles = makeStyles((theme) => ({
     icon: {
         marginRight: theme.spacing(2),
@@ -55,26 +56,28 @@ export default function Gallery() {
                 return <GraphicGallery />;
         }
     };
-  
-    const [expanded, setExpanded] = React.useState('panel1');
-
-    const handleChange = (panel) => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : true);
-    };
     return (
-<React.Fragment>
-            <div className="jumbotron"></div>
+        <React.Fragment>
+            <div className="jumbotron">
+                <img src={whiteLogo} className="whiteLogo"></img>
+                <div className="shortBio">
+                    Web Development &amp; Graphic Design
+                </div>
+                <div className="jumboImg">
+                    <img src={aboutMe}></img>
+                </div>
+            </div>
             <div className={classes.heroButtons}>
                 <Grid container spacing={2} justify="center">
                     <Grid item>
                         <Button variant="contained" color="primary" className="webBtn" onClick={() => { setCurrentPage('WebGallery') }}>
                             Web Dev
-</Button>
+                        </Button>
                     </Grid>
                     <Grid item>
                         <Button className="graphicsBtn" onClick={() => { setCurrentPage('GraphicGallery') }} >
                             Graphic Design
-</Button>
+                        </Button>
                     </Grid>
                 </Grid>
             </div>
