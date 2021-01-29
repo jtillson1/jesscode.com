@@ -6,7 +6,8 @@ import WebGallery from './webGallery';
 import GraphicGallery from './graphicGallery';
 import '../index.css';
 import whiteLogo from '../assets/images/logotype-white.png';
-import aboutMe from '../assets/images/grad-5.jpg';
+import aboutMe from '../assets/images/maine.jpeg';
+import TypeWriter from './typewriter';
 const useStyles = makeStyles((theme) => ({
     icon: {
         marginRight: theme.spacing(2),
@@ -56,15 +57,21 @@ export default function Gallery() {
                 return <GraphicGallery />;
         }
     };
+
     return (
         <React.Fragment>
+            
             <div className="jumbotron">
                 <img src={whiteLogo} className="whiteLogo"></img>
+                
                 <div className="shortBio">
                     Web Development &amp; Graphic Design
                 </div>
                 <div className="jumboImg">
                     <img src={aboutMe}></img>
+                </div>
+                <div id="typewriter">
+                    <TypeWriter />
                 </div>
             </div>
             <div className={classes.heroButtons}>
